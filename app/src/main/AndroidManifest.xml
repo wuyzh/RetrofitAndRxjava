@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wuyazhou.learn">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="com.wuyazhou.learn.LauncherApplication"
         android:allowBackup="true"

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static final String URL = "https://www.apiopen.top/";
     private ViewPager mViewPager = null;
 
     private List<View> mViews = new ArrayList<View>();
