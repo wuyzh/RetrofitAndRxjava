@@ -1,18 +1,18 @@
 package com.wuyazhou.learn.logview;
 
-import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * @author wuyazhou
  * @function 测试while true为什么没有永远执行
  * */
 public class LogShowThread extends Thread{
-    private final BlockingQueue<LogShowView.LogModel> mBlockingQueue;
+    private final PriorityBlockingQueue<LogShowView.LogModel> mBlockingQueue;
     private LogShowViewContract mShowLogViewContract;
     private boolean mQuit = false;
 
 
-    public LogShowThread(BlockingQueue<LogShowView.LogModel> mBlockingQueue){
+    public LogShowThread(PriorityBlockingQueue<LogShowView.LogModel> mBlockingQueue){
         this.mBlockingQueue = mBlockingQueue;
     }
 

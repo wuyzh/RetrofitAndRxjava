@@ -7,6 +7,9 @@ import android.view.View;
 
 import com.wuyazhou.learn.logview.LogShowView;
 import com.wuyazhou.learn.retrofit.RetrofitPagerView;
+import com.wuyazhou.learn.retrofitAndRxjava.RetrofitAndRxJavaPagerView;
+import com.wuyazhou.learn.rxjava.RxJavaPager2View;
+import com.wuyazhou.learn.rxjava.RxJavaPagerView;
 import com.wuyazhou.pagerview.ModelPagerView;
 import com.wuyazhou.pagerview.ViewPagerAdapter;
 
@@ -36,8 +39,12 @@ public class MainActivity extends AppCompatActivity {
         mViewPagerAdapter = new ViewPagerAdapter(mViews,mViewTitle, this);
         mViewPager.setAdapter(mViewPagerAdapter);
         addViewPagerView("Retrofit",new RetrofitPagerView(this));
+        addViewPagerView("RxJava(一)",new RxJavaPagerView(this));
+        addViewPagerView("RxJava(二)",new RxJavaPager2View(this));
+        addViewPagerView("Retrofit和RxJava",new RetrofitAndRxJavaPagerView(this));
         addViewPagerView("标题二",new ModelPagerView(this));
         mViewPagerAdapter.notifyDataSetChanged();
+        mViewPager.setCurrentItem(2);
     }
 
     private void addViewPagerView(String title, View view){

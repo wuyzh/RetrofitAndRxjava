@@ -74,7 +74,7 @@ public class LogShowView extends RelativeLayout implements LogShowViewContract {
 
 
     @Override
-    public void showLog(String key,String value) {
+    public synchronized void showLog(String key,String value) {
         LogModel logModel = new LogModel(key,value);
         mHandler.post(new RunnableUi(logModel));
     }
