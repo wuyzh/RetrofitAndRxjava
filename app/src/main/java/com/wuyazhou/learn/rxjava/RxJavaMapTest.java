@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -17,20 +19,44 @@ import rx.observables.GroupedObservable;
 public class RxJavaMapTest {
     private  static Subscription subscription = null;
     public static void useMap(){
-        Observable observable = Observable.just("吴","zhou");
+        Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("杨");
+                subscriber.onNext("月");
+                subscriber.onCompleted();
+            }
+        });
         observable = observable.map(new Func1<String,String>() {
             @Override
             public String call(String string) {
                 return string+"YaZhou";
             }
         });
-        Action1 action1 = new Action1<String>() {
+        observable = observable.map(new Func1<String,String>() {
             @Override
-            public void call(String string) {
+            public String call(String string) {
+                return string+"变换";
+            }
+        });
+        Observer observer = new Observer<String>() {
+            @Override
+            public void onCompleted() {
+                LogShowUtil.addLog("RxJava","结束",true);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String string) {
                 LogShowUtil.addLog("RxJava","结果: "+string,true);
             }
         };
-        observable.subscribe(action1);
+
+        observable.subscribe(observer);
     }
 
     public static void useFlatMap(){

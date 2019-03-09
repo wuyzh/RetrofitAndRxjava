@@ -65,24 +65,32 @@ public class RxJavaAssistTest {
 
     public static void useObserveOn(){
         LogShowUtil.addLog("RxJava","当前线程: "+Thread.currentThread().getName(),true);
-        Observable observable = Observable.create(new Observable.OnSubscribe<Integer>(){
+        Observable Aobservable = Observable.create(new Observable.OnSubscribe<String>(){
             @Override
-            public void call(Subscriber<? super Integer> subscriber) {
-                subscriber.onNext(1);
+            public void call(Subscriber<? super String> subscriber) {
                 LogShowUtil.addLog("RxJava","发送线程: "+Thread.currentThread().getName(),true);
+                subscriber.onNext("杨");
+                subscriber.onCompleted();
             }
         });
-        observable = observable.subscribeOn(Schedulers.newThread());
-        observable = observable.observeOn(AndroidSchedulers.mainThread());
+        Observable Bobservable = Aobservable.subscribeOn(Schedulers.newThread());
+        Observable Cobservable = Bobservable.observeOn(AndroidSchedulers.mainThread());
 
-        Action1 action1 = new Action1<Integer>() {
+        Observer observer = new Observer<String>() {
             @Override
-            public void call(Integer num) {
+            public void onCompleted() {
+                LogShowUtil.addLog("RxJava","结束",true);
+            }
+            @Override
+            public void onError(Throwable e) {
+            }
+            @Override
+            public void onNext(String string) {
                 LogShowUtil.addLog("RxJava","接受线程: "+Thread.currentThread().getName(),true);
-                LogShowUtil.addLog("RxJava","结果: "+num.intValue(),true);
+                LogShowUtil.addLog("RxJava","结果: "+string,true);
             }
         };
-        observable.subscribe(action1);
+        Cobservable.subscribe(observer);
     }
 
     public static void useTimeOut(){
