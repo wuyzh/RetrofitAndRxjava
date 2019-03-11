@@ -52,7 +52,7 @@ public class RxJavaMergeTest {
     }
 
     public static void useZip(){
-        Observable ob1 = Observable.just("s","x","z").subscribeOn(Schedulers.io());
+        Observable ob1 = Observable.just("x","y","z").subscribeOn(Schedulers.io());
         Observable ob2 = Observable.just(4,5,6);
         Observable observable = Observable.zip(ob1, ob2, new Func2<String,Integer,String>() {
             @Override
@@ -70,7 +70,7 @@ public class RxJavaMergeTest {
     }
 
     public static void useCombineLastest(){
-        Observable ob1 = Observable.just("s","x","z");
+        Observable ob1 = Observable.just("x","y","z");
         Observable ob2 = Observable.just(4,5,6);
         Observable observable = Observable.combineLatest(ob1, ob2, new Func2<String,Integer,String>() {
             @Override

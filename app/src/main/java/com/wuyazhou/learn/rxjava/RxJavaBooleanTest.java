@@ -16,7 +16,7 @@ public class RxJavaBooleanTest {
             @Override
             public Boolean call(Integer num) {
                 LogShowUtil.addLog("RxJava","Call: "+num.intValue(),true);
-                return num<5;
+                return num<3;
             }
         });
         Observer observer= new Observer<Boolean>() {

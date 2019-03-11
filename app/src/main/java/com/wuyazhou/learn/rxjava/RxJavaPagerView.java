@@ -124,7 +124,7 @@ public class RxJavaPagerView extends FrameLayout implements View.OnClickListener
 
             @Override
             public void onNext(String string) {
-                LogShowUtil.addLog("RxJava",string,true);
+                LogShowUtil.addLog("RxJava","结果: "+string,true);
             }
         };
     }

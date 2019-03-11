@@ -161,5 +161,7 @@
     <orderEntry type="module" module-name="utils" />
     <orderEntry type="module" module-name="logview" />
     <orderEntry type="module" module-name="utils" />
+    <orderEntry type="module" module-name="logview" />
+    <orderEntry type="module" module-name="utils" />
   </component>
 </module>

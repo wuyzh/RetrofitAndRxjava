@@ -178,5 +178,8 @@
     <orderEntry type="module" module-name="logview" />
     <orderEntry type="module" module-name="utils" />
     <orderEntry type="module" module-name="pagerview" />
+    <orderEntry type="module" module-name="logview" />
+    <orderEntry type="module" module-name="utils" />
+    <orderEntry type="module" module-name="pagerview" />
   </component>
 </module>
